@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/uploads', express.static(path.resolve('uploads')));
 
-
+app.set("port", process.env.PORT || 5000);
 
 app.get('/', (req, res) => {
     res.send('kmz api by agustin galante');
@@ -36,6 +36,6 @@ app.post('/upload', multer.single('archivo'), (req, res) => {
         });
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || app.get("port"), () => {
     console.log('server on port 5000')
 })
