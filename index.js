@@ -14,7 +14,14 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/uploads', express.static(path.resolve('uploads')))
+app.use('/uploads', express.static(path.resolve('uploads')));
+
+
+
+app.get('/', (req, res) => {
+    res.send('kmz api by agustin galante');
+})
+
 app.post('/upload', multer.single('archivo'), (req, res) => {
     const { filename } = req.file;
 
